@@ -11,7 +11,8 @@ public class Menu {
         String cabecalho = design + "\t\tSistema de cadastro\n" + design;
         String continuar = "nao";
 
-        String menu = cabecalho + "1 - Cadastro\n" +
+        String menu = cabecalho +
+                    "1 - Cadastro\n" +
                     "2 - Listagem\n" +
                     "3 - Atualização\n" +
                     "4 - Exclusão\n" +
@@ -31,6 +32,9 @@ public class Menu {
                     break;
                 case 2:
                     crud.read();
+                    break;
+                case 4:
+                    crud.delete();
                     break;
                 case 5:
                     continuar = "nao";

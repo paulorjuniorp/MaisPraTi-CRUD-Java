@@ -26,7 +26,12 @@ public class PessoaRepository implements IPessoaRepository{
     }
 
     @Override
-    public boolean deletarPessoa(long id) {
-        return false;
+    public void deletarPessoa(String nomeExclusao) {
+        for (Pessoa pessoa:listaPessoas) {
+            if (pessoa.getNome().equalsIgnoreCase(nomeExclusao)){
+                listaPessoas.remove(pessoa);
+                System.out.println("Removido com sucesso!");
+            }
+        }
     }
 }

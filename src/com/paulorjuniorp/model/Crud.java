@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Crud {
 
     Scanner entrada = new Scanner(System.in);
-    Pessoa pessoa = new Pessoa();
     PessoaRepository pessoaRepository = new PessoaRepository();
 
     public void create(){
@@ -34,12 +33,18 @@ public class Crud {
 
         List<Pessoa> exibePessoa = pessoaRepository.listarPessoas();
         for (Pessoa exibir:exibePessoa) {
-            System.out.println("Nome" + exibir.getNome());
-            System.out.println("Telefone" + exibir.getTelefone());
-            System.out.println("Data de nascimento" + exibir.getDataNascimento());
-            System.out.println("=============================");
+            System.out.println("Nome: " + exibir.getNome());
+            System.out.println("Telefone: " + exibir.getTelefone());
+            System.out.println("Data de nascimento: " + exibir.getDataNascimento());
+            System.out.println("-------------------------------------------");
         }
 
+    }
+
+    public void delete(){
+        System.out.println("Quem você deseja excluir?");
+        String nomeExclusao = entrada.nextLine();
+        pessoaRepository.deletarPessoa(nomeExclusao);
     }
 
 
