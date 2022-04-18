@@ -21,8 +21,13 @@ public class PessoaRepository implements IPessoaRepository{
     }
 
     @Override
-    public boolean alterarPessoa(Pessoa pessoa) {
-        return false;
+    public void alterarPessoa(String nomePessoa, Pessoa pessoa) {
+        for (Pessoa pessoaList:listaPessoas) {
+            if (pessoaList.getNome().equalsIgnoreCase(nomePessoa)){
+                int indice = listaPessoas.indexOf(pessoaList);
+                listaPessoas.set(indice,pessoa);
+            }
+        }
     }
 
     @Override

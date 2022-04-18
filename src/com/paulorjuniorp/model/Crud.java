@@ -41,11 +41,33 @@ public class Crud {
 
     }
 
+    public void update(){
+        Pessoa pessoaUpdate = new Pessoa();
+
+        System.out.println("Quem você deseja atualizar?");
+        String pessoaAtualizar = entrada.nextLine();
+
+        System.out.println("Insira o nome");
+        String nomePessoaUpdate = entrada.nextLine();
+
+        System.out.println("Insira o numero de telefone");
+        String telefonePessoaUpdate = entrada.nextLine();
+
+        System.out.println("Insira a data de nascimento");
+        String dataNascimentoPessoaUpdate = entrada.nextLine();
+
+        pessoaUpdate.setNome(nomePessoaUpdate);
+        pessoaUpdate.setTelefone(telefonePessoaUpdate);
+        pessoaUpdate.setDataNascimento(dataNascimentoPessoaUpdate);
+
+        pessoaRepository.alterarPessoa(pessoaAtualizar,pessoaUpdate);
+
+    }
+
     public void delete(){
         System.out.println("Quem você deseja excluir?");
         String nomeExclusao = entrada.nextLine();
         pessoaRepository.deletarPessoa(nomeExclusao);
     }
-
 
 }

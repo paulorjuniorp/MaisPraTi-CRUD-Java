@@ -33,6 +33,9 @@ public class Menu {
                 case 2:
                     crud.read();
                     break;
+                case 3:
+                    crud.update();
+                    break;
                 case 4:
                     crud.delete();
                     break;
