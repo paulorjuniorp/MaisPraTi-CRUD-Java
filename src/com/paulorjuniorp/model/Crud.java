@@ -1,5 +1,6 @@
 package com.paulorjuniorp.model;
 
+import com.paulorjuniorp.repository.AlunoRepository;
 import com.paulorjuniorp.repository.PessoaRepository;
 
 import java.util.List;
@@ -9,36 +10,67 @@ public class Crud {
 
     Scanner entrada = new Scanner(System.in);
     PessoaRepository pessoaRepository = new PessoaRepository();
+    AlunoRepository alunoRepository = new AlunoRepository();
 
     public void create(){
+
         System.out.println("Insira o nome");
-        String nomePessoa = entrada.nextLine();
+        String nome = entrada.nextLine();
 
         System.out.println("Insira o numero de telefone");
-        String telefonePessoa = entrada.nextLine();
+        String telefone = entrada.nextLine();
 
         System.out.println("Insira a data de nascimento");
-        String dataNascimentoPessoa = entrada.nextLine();
+        String dataNascimento = entrada.nextLine();
 
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNome(nomePessoa);
-        pessoa.setTelefone(telefonePessoa);
-        pessoa.setDataNascimento(dataNascimentoPessoa);
+        System.out.println("Possui nota final? sim || nao");
+        String temNotaFinal = entrada.next();
+        entrada.nextLine();
 
-        pessoaRepository.salvarPessoa(pessoa);
+        if (temNotaFinal.equalsIgnoreCase("nao")){
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNome(nome);
+            pessoa.setTelefone(telefone);
+            pessoa.setDataNascimento(dataNascimento);
+
+            pessoaRepository.salvarPessoa(pessoa);
+        }else{
+
+            System.out.println("Digite a nota final");
+            double notaFinal = entrada.nextDouble();
+            entrada.nextLine();
+
+            Aluno aluno = new Aluno();
+            aluno.setNome(nome);
+            aluno.setTelefone(telefone);
+            aluno.setDataNascimento(dataNascimento);
+            aluno.setNotaFinal(notaFinal);
+
+            alunoRepository.salvarAluno(aluno);
+
+        }
     }
-
 
     public void read(){
 
         List<Pessoa> exibePessoa = pessoaRepository.listarPessoas();
         for (Pessoa exibir:exibePessoa) {
+            System.out.println("-------Pessoa--------");
             System.out.println("Nome: " + exibir.getNome());
             System.out.println("Telefone: " + exibir.getTelefone());
             System.out.println("Data de nascimento: " + exibir.getDataNascimento());
             System.out.println("-------------------------------------------");
         }
 
+        List<Aluno> exibeAluno = alunoRepository.listarAlunos();
+        for (Aluno exibir:exibeAluno) {
+            System.out.println("----------Aluno----------");
+            System.out.println("Nome: " + exibir.getNome());
+            System.out.println("Telefone: " + exibir.getTelefone());
+            System.out.println("Data de nascimento: " + exibir.getDataNascimento());
+            System.out.println("Nota final: " + exibir.getNotaFinal());
+            System.out.println("-------------------------------------------");
+        }
     }
 
     public void update(){

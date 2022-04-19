@@ -53,6 +53,8 @@ public class Menu {
 
             System.out.println("Deseja continuar? sim|nao");
             continuar = entrada.next();
+            entrada.nextLine();
+
         }while (continuar.equalsIgnoreCase("sim"));
     }
 }
