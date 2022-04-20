@@ -1,7 +1,6 @@
 package com.paulorjuniorp;
 
 import com.paulorjuniorp.model.Crud;
-import com.paulorjuniorp.model.Pessoa;
 
 import java.util.Scanner;
 
@@ -26,7 +25,9 @@ public class Menu {
          do {
             System.out.println(menu);
             int opcao = entrada.nextInt();
+
             switch (opcao) {
+
                 case 1:
                     crud.create();
                     break;

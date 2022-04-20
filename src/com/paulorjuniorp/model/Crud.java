@@ -74,32 +74,78 @@ public class Crud {
     }
 
     public void update(){
-        Pessoa pessoaUpdate = new Pessoa();
 
-        System.out.println("Quem você deseja atualizar?");
-        String pessoaAtualizar = entrada.nextLine();
+        System.out.printf("Você deseja alterar pessoa ou aluno?\n1 - Pessoa\n2-Aluno");
+        int opcaoAlteracao = entrada.nextInt();
+        entrada.nextLine();
 
-        System.out.println("Insira o nome");
-        String nomePessoaUpdate = entrada.nextLine();
+        if (opcaoAlteracao == 1){
+            Pessoa pessoaUpdate = new Pessoa();
 
-        System.out.println("Insira o numero de telefone");
-        String telefonePessoaUpdate = entrada.nextLine();
+            System.out.println("Quem você deseja atualizar?");
+            String pessoaAtualizar = entrada.nextLine();
 
-        System.out.println("Insira a data de nascimento");
-        String dataNascimentoPessoaUpdate = entrada.nextLine();
+            System.out.println("Insira o nome");
+            String nomePessoaUpdate = entrada.nextLine();
 
-        pessoaUpdate.setNome(nomePessoaUpdate);
-        pessoaUpdate.setTelefone(telefonePessoaUpdate);
-        pessoaUpdate.setDataNascimento(dataNascimentoPessoaUpdate);
+            System.out.println("Insira o numero de telefone");
+            String telefonePessoaUpdate = entrada.nextLine();
 
-        pessoaRepository.alterarPessoa(pessoaAtualizar,pessoaUpdate);
+            System.out.println("Insira a data de nascimento");
+            String dataNascimentoPessoaUpdate = entrada.nextLine();
+
+            pessoaUpdate.setNome(nomePessoaUpdate);
+            pessoaUpdate.setTelefone(telefonePessoaUpdate);
+            pessoaUpdate.setDataNascimento(dataNascimentoPessoaUpdate);
+
+            pessoaRepository.alterarPessoa(pessoaAtualizar,pessoaUpdate);
+        } else if (opcaoAlteracao == 2) {
+            Aluno alunoUpdate = new Aluno();
+
+            System.out.println("Quem você deseja atualizar?");
+            String alunoAtualizar = entrada.nextLine();
+
+            System.out.println("Insira o nome");
+            String nomeAlunoUpdate = entrada.nextLine();
+
+            System.out.println("Insira o numero de telefone");
+            String telefoneAlunoUpdate = entrada.nextLine();
+
+            System.out.println("Insira a data de nascimento");
+            String dataNascimentoAlunoUpdate = entrada.nextLine();
+
+            System.out.println("Insira a nota final");
+            double notaFinalAlunoUpdate = entrada.nextDouble();
+
+            alunoUpdate.setNome(nomeAlunoUpdate);
+            alunoUpdate.setTelefone(telefoneAlunoUpdate);
+            alunoUpdate.setDataNascimento(dataNascimentoAlunoUpdate);
+            alunoUpdate.setNotaFinal(notaFinalAlunoUpdate);
+
+            alunoRepository.alterarAluno(alunoAtualizar,alunoUpdate);
+        }
+        else{
+            System.out.printf("Opção inválida!");
+        }
 
     }
 
     public void delete(){
-        System.out.println("Quem você deseja excluir?");
-        String nomeExclusao = entrada.nextLine();
-        pessoaRepository.deletarPessoa(nomeExclusao);
+
+        System.out.printf("Deseja excluir pessoa ou aluno? 1 - Pessoa || 2 - Aluno");
+        int opcaoExclusao = entrada.nextInt();
+        entrada.nextLine();
+        if (opcaoExclusao == 1){
+            System.out.println("Quem você deseja excluir?");
+            String nomeExclusao = entrada.nextLine();
+            pessoaRepository.deletarPessoa(nomeExclusao);
+        } else if (opcaoExclusao == 2) {
+            System.out.println("Quem você deseja excluir?");
+            String nomeExclusao = entrada.nextLine();
+            alunoRepository.deletarAluno(nomeExclusao);
+        }
+
+
     }
 
 }
