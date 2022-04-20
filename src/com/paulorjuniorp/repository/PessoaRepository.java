@@ -1,12 +1,13 @@
 package com.paulorjuniorp.repository;
 
+import com.paulorjuniorp.model.Aluno;
 import com.paulorjuniorp.model.Pessoa;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PessoaRepository implements IPessoaRepository{
-
 
     List<Pessoa> listaPessoas = new ArrayList<>();
 
@@ -32,7 +33,9 @@ public class PessoaRepository implements IPessoaRepository{
 
     @Override
     public void deletarPessoa(String nomeExclusao) {
-        for (Pessoa pessoa:listaPessoas) {
+        Iterator<Pessoa> pessoasIterator = listaPessoas.iterator();
+        while (pessoasIterator.hasNext()){
+            Pessoa pessoa = pessoasIterator.next();
             if (pessoa.getNome().equalsIgnoreCase(nomeExclusao)){
                 listaPessoas.remove(pessoa);
                 System.out.println("Removido com sucesso!");

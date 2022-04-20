@@ -93,6 +93,7 @@ public class Crud {
 
             System.out.println("Insira a data de nascimento");
             String dataNascimentoPessoaUpdate = entrada.nextLine();
+            entrada.nextLine();
 
             pessoaUpdate.setNome(nomePessoaUpdate);
             pessoaUpdate.setTelefone(telefonePessoaUpdate);
@@ -116,6 +117,7 @@ public class Crud {
 
             System.out.println("Insira a nota final");
             double notaFinalAlunoUpdate = entrada.nextDouble();
+            entrada.nextLine();
 
             alunoUpdate.setNome(nomeAlunoUpdate);
             alunoUpdate.setTelefone(telefoneAlunoUpdate);
