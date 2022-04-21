@@ -7,8 +7,10 @@ public class Pessoa {
     private String nome;
     private String telefone;
     private String dataNascimento;
-    private final LocalDate dataCadastro = LocalDate.now();;
-    private LocalDate dataAtualização = LocalDate.now();
+    private LocalDate dataCadastro = LocalDate.now();;
+    private LocalDate dataAtualizacao = LocalDate.now();
+
+
 
     public String getNome() {
         return nome;
@@ -38,11 +40,11 @@ public class Pessoa {
         return dataCadastro;
     }
 
-    public LocalDate getDataAtualização() {
-        return dataAtualização;
+    public LocalDate getDataAtualizacao() {
+        return dataAtualizacao;
     }
 
-    public void setDataAtualização(LocalDate dataAtualização) {
-        this.dataAtualização = dataAtualização;
+    public void setDataAtualizacao(LocalDate dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 }
